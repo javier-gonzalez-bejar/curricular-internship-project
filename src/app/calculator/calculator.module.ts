@@ -5,16 +5,8 @@ import { CalculatorComponent } from './components/calculator/calculator.componen
 import { SolvedOperationHistoryComponent } from './components/solved-operation-history/solved-operation-history.component';
 
 @NgModule({
-  declarations: [
-    CalculatorPageComponent,
-    CalculatorComponent,
-    SolvedOperationHistoryComponent
-  ],
-  exports: [
-    CalculatorPageComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+  declarations: [CalculatorPageComponent, CalculatorComponent, SolvedOperationHistoryComponent],
+  exports: [CalculatorPageComponent],
+  imports: [CommonModule]
 })
 export class CalculatorModule { }

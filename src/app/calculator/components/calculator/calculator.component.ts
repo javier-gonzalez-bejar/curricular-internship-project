@@ -6,36 +6,39 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class CalculatorComponent {
 
+  private _unsolvedOperation: string = '';
+
   @Output()
   public onNewSolvedOperation: EventEmitter<string> = new EventEmitter();
 
-  public unsolvedOperation: string = '';
+  get unsolvedOperation() {
+    return this._unsolvedOperation;
+  }
 
   concatenateInUnsolvedOperation(string: string): void {
-    this.unsolvedOperation += string;
+    this._unsolvedOperation += string;
   }
 
   emitSolvedOperation(): void {
     const unsolvedOperationRegExp: RegExp = /^\d+(\.\d+)?([+\-*/]\d+(\.\d+)?)*$/;
-    if (!unsolvedOperationRegExp.test(this.unsolvedOperation)) {
-      console.error(`The operation "${this.unsolvedOperation}" does not comply with the regular expression "^\d+(\.\d+)?([+\-*/]\d+(\.\d+)?)*$"`);
-      this.unsolvedOperation = '';
+    if (!unsolvedOperationRegExp.test(this._unsolvedOperation)) {
+      console.error(`The operation "${this._unsolvedOperation}" does not comply with the regular expression "${unsolvedOperationRegExp}"`);
+      this._unsolvedOperation = '';
       return;
     }
     let result: number;
     try {
-      result = new Function(`return ${this.unsolvedOperation}`)();
-      if (result === Infinity || result === -Infinity) throw Error(`The result of the operation "${this.unsolvedOperation}" is Infinity`);
-      if (isNaN(result)) throw Error(`The result of the operation "${this.unsolvedOperation}" is NaN`);
+      result = new Function(`return ${this._unsolvedOperation}`)();
+      if (result === Infinity || result === -Infinity || isNaN(result)) throw Error(`The result of the operation "${this._unsolvedOperation}" is "${result}"`);
     } catch (error) {
       if (error instanceof Error) console.error(error.message);
       else console.error('Unexpected error:', error);
-      this.unsolvedOperation = '';
+      this._unsolvedOperation = '';
       return;
     }
-    const solvedOperation: string = `${this.unsolvedOperation}=${result}`;
+    const solvedOperation: string = `${this._unsolvedOperation}=${result}`;
     this.onNewSolvedOperation.emit(solvedOperation);
-    this.unsolvedOperation = '';
+    this._unsolvedOperation = '';
   }
 
 }
