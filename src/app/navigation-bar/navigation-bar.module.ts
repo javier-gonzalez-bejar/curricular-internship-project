@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 
 @NgModule({

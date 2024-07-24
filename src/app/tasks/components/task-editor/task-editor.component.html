@@ -1,0 +1,31 @@
+<button [attr.data-bs-target]="'#task' + task.id + 'EditorModal'" class="btn btn-primary" data-bs-toggle="modal" type="button">Edit</button>
+<div [attr.aria-labelledby]="'task' + task.id + 'EditorModalLabel'" [attr.id]="'task' + task.id + 'EditorModal'" aria-hidden="true" class="fade modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (ngSubmit)="emitTaskEdition()">
+        <div class="modal-header">
+          <h1 [attr.id]="'task' + task.id + 'EditorModalLabel'" class="fs-5 modal-title">Edit task</h1>
+          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+        </div>
+        <div class="modal-body">
+          <div class="m-3 mt-0">
+            <label class="form-label" for="title">Title</label>
+            <input [(ngModel)]="task.title" class="form-control" id="title" name="title" type="text">
+          </div>
+          <div class="m-3">
+            <label class="form-label" for="description">Description</label>
+            <input [(ngModel)]="task.description" class="form-control" id="description" name="description" type="text">
+          </div>
+          <div class="form-check m-3">
+            <input [(ngModel)]="task.completed" class="form-check-input" id="completed" name="completed" type="checkbox">
+            <label class="form-check-label" for="completed">Completed</label>
+          </div>
+          <div class="modal-footer">
+            <button #closeButton class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+            <button class="btn btn-primary" type="submit">Edit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

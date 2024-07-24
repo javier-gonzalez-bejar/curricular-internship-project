@@ -8,16 +8,6 @@ export class CalculatorPageComponent {
 
   private _solvedOperationHistory: string[] = [];
 
-  private loadLocalStorage(): void {
-    const solvedOperationHistoryLocalStorage: string | null = localStorage.getItem('solvedOperationHistory');
-    if (solvedOperationHistoryLocalStorage === null) return;
-    this._solvedOperationHistory = JSON.parse(solvedOperationHistoryLocalStorage);
-  }
-
-  private saveLocalStorage(): void {
-    localStorage.setItem('solvedOperationHistory', JSON.stringify(this._solvedOperationHistory));
-  }
-
   constructor() {
     this.loadLocalStorage();
   }
@@ -26,9 +16,19 @@ export class CalculatorPageComponent {
     return [...this._solvedOperationHistory];
   }
 
-  onNewSolvedOperation(solvedOperation: string): void {
-    this._solvedOperationHistory.push(solvedOperation);
+  onSolvedOperation(solvedOperation: string): void {
+    this._solvedOperationHistory.unshift(solvedOperation);
     this.saveLocalStorage();
+  }
+
+  private loadLocalStorage(): void {
+    const solvedOperationHistoryLocalStorage: string | null = localStorage.getItem('solvedOperationHistory');
+    if (solvedOperationHistoryLocalStorage === null) return;
+    this._solvedOperationHistory = JSON.parse(solvedOperationHistoryLocalStorage);
+  }
+
+  private saveLocalStorage(): void {
+    localStorage.setItem('solvedOperationHistory', JSON.stringify(this._solvedOperationHistory));
   }
 
 }

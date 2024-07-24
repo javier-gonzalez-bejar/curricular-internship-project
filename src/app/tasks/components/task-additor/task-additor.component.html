@@ -1,0 +1,31 @@
+<button class="btn btn-primary" data-bs-target="#taskAdditorModal" data-bs-toggle="modal" type="button">Add a new task</button>
+<div aria-hidden="true" aria-labelledby="taskAdditorModalLabel" class="fade modal" id="taskAdditorModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (ngSubmit)="emitTaskAddition()">
+        <div class="modal-header">
+          <h1 class="fs-5 modal-title" id="taskAdditorModalLabel">Add task</h1>
+          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+        </div>
+        <div class="modal-body">
+          <div class="m-3 mt-0">
+            <label class="form-label" for="title">Title</label>
+            <input [(ngModel)]="task.title" class="form-control" id="title" name="title" type="text">
+          </div>
+          <div class="m-3">
+            <label class="form-label" for="description">Description</label>
+            <input [(ngModel)]="task.description" class="form-control" id="description" name="description" type="text">
+          </div>
+          <div class="form-check m-3">
+            <input [(ngModel)]="task.completed" class="form-check-input" id="completed" name="completed" type="checkbox">
+            <label class="form-check-label" for="completed">Completed</label>
+          </div>
+          <div class="modal-footer">
+            <button #closeButton class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+            <button class="btn btn-primary" type="submit">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

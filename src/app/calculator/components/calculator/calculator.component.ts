@@ -6,12 +6,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class CalculatorComponent {
 
+  @Output()
+  public onSolvedOperation: EventEmitter<string> = new EventEmitter();
+
   private _unsolvedOperation: string = '';
 
-  @Output()
-  public onNewSolvedOperation: EventEmitter<string> = new EventEmitter();
-
-  get unsolvedOperation() {
+  get unsolvedOperation(): string {
     return this._unsolvedOperation;
   }
 
@@ -37,7 +37,7 @@ export class CalculatorComponent {
       return;
     }
     const solvedOperation: string = `${this._unsolvedOperation}=${result}`;
-    this.onNewSolvedOperation.emit(solvedOperation);
+    this.onSolvedOperation.emit(solvedOperation);
     this._unsolvedOperation = '';
   }
 

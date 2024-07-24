@@ -1,0 +1,20 @@
+<button [attr.data-bs-target]="'#task' + task.id + 'DeleterModal'" class="btn btn-primary" data-bs-toggle="modal" type="button">Delete</button>
+<div [attr.aria-labelledby]="'task' + task.id + 'DeleterModalLabel'" [attr.id]="'task' + task.id + 'DeleterModal'" aria-hidden="true" class="fade modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form (ngSubmit)="emitTaskDeletion()">
+        <div class="modal-header">
+          <h1 [attr.id]="'task' + task.id + 'DeleterModalLabel'" class="fs-5 modal-title">Delete task</h1>
+          <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+        </div>
+        <div class="modal-body">
+          <p class="m-3 mt-0 text-break">Are you sure you want to delete "{{task.title}}"?</p>
+          <div class="modal-footer">
+            <button #closeButton class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+            <button class="btn btn-primary" type="submit">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

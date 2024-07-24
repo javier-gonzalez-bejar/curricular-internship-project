@@ -1,0 +1,15 @@
+<ul class="list-group list-group-flush overflow-y-auto rounded" style="max-height: 350px">
+  <li *ngFor="let task of tasks" class="align-items-stretch align-items-md-center border border-white border-2 column-gap-4 d-flex flex-column flex-md-row justify-content-md-between row-gap-2 list-group-item list-group-item-secondary">
+    <div class="d-flex flex-wrap row-gap-1 w-100">
+      <div class="d-flex gap-2">
+        <input [checked]="task.completed" class="form-check-input" disabled type="checkbox">
+        <p class="fw-medium m-0 text-break">{{task.title}}</p>
+      </div>
+      <p class="m-0 ms-4 text-break">{{task.description}}</p>
+    </div>
+    <div class="ms-4 column-gap-2 d-flex">
+      <tasks-task-editor (onTaskEdition)="onTaskEdition($event)" [task]="task"></tasks-task-editor>
+      <tasks-task-deleter (onTaskDeletion)="onTaskDeletion($event)" [task]="task"></tasks-task-deleter>
+    </div>
+  </li>
+</ul>
