@@ -8,10 +8,18 @@ import { TasksService } from '../../services/tasks.service';
 })
 export class TaskListComponent {
 
-  @Input()
-  public tasks: Task[] = [];
+  private _tasks: Task[] = [];
 
   constructor(private tasksService: TasksService) { }
+
+  get tasks() {
+    return this._tasks;
+  }
+
+  @Input()
+  set tasks(tasks: Task[]) {
+    this._tasks = tasks;
+  }
 
   onTaskDeletion(task: Task): void {
     this.tasksService.deleteTask(task);

@@ -2,26 +2,26 @@
   <input class="border border-secondary border-2 form-control-plaintext px-3 rounded" readonly value="{{unsolvedOperation}}">
 </div>
 <div class="d-flex gap-1">
-  <button (click)="concatenateInUnsolvedOperation('9')" class="btn btn-light w-100">9</button>
-  <button (click)="concatenateInUnsolvedOperation('8')" class="btn btn-light w-100">8</button>
-  <button (click)="concatenateInUnsolvedOperation('7')" class="btn btn-light w-100">7</button>
-  <button (click)="concatenateInUnsolvedOperation('/')" class="btn btn-secondary w-100">/</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('9')">9</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('8')">8</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('7')">7</button>
+  <button class="btn btn-secondary w-100" (click)="concatenateInUnsolvedOperation('/')">/</button>
 </div>
 <div class="d-flex gap-1">
-  <button (click)="concatenateInUnsolvedOperation('6')" class="btn btn-light w-100">6</button>
-  <button (click)="concatenateInUnsolvedOperation('5')" class="btn btn-light w-100">5</button>
-  <button (click)="concatenateInUnsolvedOperation('4')" class="btn btn-light w-100">4</button>
-  <button (click)="concatenateInUnsolvedOperation('*')" class="btn btn-secondary w-100">*</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('6')">6</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('5')">5</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('4')">4</button>
+  <button class="btn btn-secondary w-100" (click)="concatenateInUnsolvedOperation('*')">*</button>
 </div>
 <div class="d-flex gap-1">
-  <button (click)="concatenateInUnsolvedOperation('3')" class="btn btn-light w-100">3</button>
-  <button (click)="concatenateInUnsolvedOperation('2')" class="btn btn-light w-100">2</button>
-  <button (click)="concatenateInUnsolvedOperation('1')" class="btn btn-light w-100">1</button>
-  <button (click)="concatenateInUnsolvedOperation('-')" class="btn btn-secondary w-100">-</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('3')">3</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('2')">2</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('1')">1</button>
+  <button class="btn btn-secondary w-100" (click)="concatenateInUnsolvedOperation('-')">-</button>
 </div>
 <div class="d-flex gap-1">
-  <button (click)="concatenateInUnsolvedOperation('0')" class="btn btn-light w-100">0</button>
-  <button (click)="concatenateInUnsolvedOperation('.')" class="btn btn-light w-100">.</button>
-  <button (click)="emitSolvedOperation()" class="btn btn-primary w-100">=</button>
-  <button (click)="concatenateInUnsolvedOperation('+')" class="btn btn-secondary w-100">+</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('0')">0</button>
+  <button class="btn btn-light w-100" (click)="concatenateInUnsolvedOperation('.')">.</button>
+  <button class="btn btn-primary w-100" (click)="emitSolvedOperation()">=</button>
+  <button class="btn btn-secondary w-100" (click)="concatenateInUnsolvedOperation('+')">+</button>
 </div>

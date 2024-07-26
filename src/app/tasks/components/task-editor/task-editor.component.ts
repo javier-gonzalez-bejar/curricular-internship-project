@@ -7,23 +7,39 @@ import { Task } from '../../interfaces/task.interfaces';
 })
 export class TaskEditorComponent {
 
-  @ViewChild('closeButton')
-  public closeButton!: ElementRef<HTMLButtonElement>;
+  private _closeButton!: ElementRef<HTMLButtonElement>;
 
-  @Output()
-  public onTaskEdition: EventEmitter<Task> = new EventEmitter();
+  private _onTaskEdition: EventEmitter<Task> = new EventEmitter();
 
-  @Input()
-  public task: Task = {
+  private _task: Task = {
     completed: false,
     description: '',
     title: ''
   };
 
+  @Output()
+  get onTaskEdition() {
+    return this._onTaskEdition;
+  }
+
+  get task(): Task {
+    return this._task;
+  }
+
+  @ViewChild('closeButton')
+  set closeButton(closeButton: ElementRef<HTMLButtonElement>) {
+    this._closeButton = closeButton;
+  }
+
+  @Input()
+  set task(task: Task) {
+    this._task = {...task};
+  }
+
   emitTaskEdition(): void {
-    if (!(this.task.completed === true || this.task.completed === false) || !(this.task.description.length > 0) || !(this.task.title.length > 0)) return;
-    this.onTaskEdition.emit(this.task);
-    this.closeButton.nativeElement.click();
+    if (!(this._task.completed === true || this._task.completed === false) || !(this._task.description.length > 0) || !(this._task.title.length > 0)) return;
+    this._onTaskEdition.emit(this._task);
+    this._closeButton.nativeElement.click();
   }
 
 }

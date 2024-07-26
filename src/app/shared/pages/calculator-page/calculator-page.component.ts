@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'calculator-calculator-page',
+  selector: 'shared-calculator-page',
   templateUrl: './calculator-page.component.html'
 })
 export class CalculatorPageComponent {
@@ -13,7 +13,7 @@ export class CalculatorPageComponent {
   }
 
   get solvedOperationHistory(): string[] {
-    return [...this._solvedOperationHistory];
+    return this._solvedOperationHistory;
   }
 
   onSolvedOperation(solvedOperation: string): void {

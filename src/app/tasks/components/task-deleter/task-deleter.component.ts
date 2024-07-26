@@ -7,22 +7,38 @@ import { Task } from '../../interfaces/task.interfaces';
 })
 export class TaskDeleterComponent {
 
-  @ViewChild('closeButton')
-  public closeButton!: ElementRef<HTMLButtonElement>;
+  private _closeButton!: ElementRef<HTMLButtonElement>;
 
-  @Output()
-  public onTaskDeletion: EventEmitter<Task> = new EventEmitter();
+  private _onTaskDeletion: EventEmitter<Task> = new EventEmitter();
 
-  @Input()
-  public task: Task = {
+  private _task: Task = {
     completed: false,
     description: '',
     title: ''
   };
 
+  @Output()
+  get onTaskDeletion() {
+    return this._onTaskDeletion;
+  }
+
+  get task(): Task {
+    return this._task;
+  }
+
+  @ViewChild('closeButton')
+  set closeButton(closeButton: ElementRef<HTMLButtonElement>) {
+    this._closeButton = closeButton;
+  }
+
+  @Input()
+  set task(task: Task) {
+    this._task = {...task};
+  }
+
   emitTaskDeletion(): void {
-    this.onTaskDeletion.emit(this.task);
-    this.closeButton.nativeElement.click();
+    this._onTaskDeletion.emit(this._task);
+    this._closeButton.nativeElement.click();
   }
 
 }

@@ -6,7 +6,15 @@ import { Component, Input } from '@angular/core';
 })
 export class SolvedOperationHistoryComponent {
 
+  private _solvedOperationHistory: string[] = [];
+
+  get solvedOperationHistory(): string[] {
+    return this._solvedOperationHistory;
+  }
+
   @Input()
-  public solvedOperationHistory: string[] = [];
+  set solvedOperationHistory(solvedOperationHistory: string[]) {
+    this._solvedOperationHistory = solvedOperationHistory;
+  }
 
 }

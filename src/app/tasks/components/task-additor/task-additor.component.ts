@@ -7,27 +7,43 @@ import { Task } from '../../interfaces/task.interfaces';
 })
 export class TaskAdditorComponent {
 
-  @ViewChild('closeButton')
-  public closeButton!: ElementRef<HTMLButtonElement>;
+  private _closeButton!: ElementRef<HTMLButtonElement>;
 
-  @Output()
-  public onTaskAddition: EventEmitter<Task> = new EventEmitter();
+  private _onTaskAddition: EventEmitter<Task> = new EventEmitter();
 
-  public task: Task = {
+  private _task: Task = {
     completed: false,
     description: '',
     title: ''
   };
 
+  @Output()
+  get onTaskAddition() {
+    return this._onTaskAddition;
+  }
+
+  get task(): Task {
+    return this._task;
+  }
+
+  set task(task: Task) {
+    this._task = task;
+  }
+
+  @ViewChild('closeButton')
+  set closeButton(closeButton: ElementRef<HTMLButtonElement>) {
+    this._closeButton = closeButton;
+  }
+
   emitTaskAddition(): void {
-    if (!(this.task.completed === true || this.task.completed === false) || !(this.task.description.length > 0) || !(this.task.title.length > 0)) return;
-    this.onTaskAddition.emit(this.task);
-    this.task = {
+    if (!(this._task.completed === true || this._task.completed === false) || !(this._task.description.length > 0) || !(this._task.title.length > 0)) return;
+    this._onTaskAddition.emit(this._task);
+    this._task = {
       completed: false,
       description: '',
       title: ''
     };
-    this.closeButton.nativeElement.click();
+    this._closeButton.nativeElement.click();
   }
 
 }

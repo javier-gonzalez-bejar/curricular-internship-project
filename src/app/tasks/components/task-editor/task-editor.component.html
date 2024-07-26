@@ -1,5 +1,5 @@
 <button [attr.data-bs-target]="'#task' + task.id + 'EditorModal'" class="btn btn-primary" data-bs-toggle="modal" type="button">Edit</button>
-<div [attr.aria-labelledby]="'task' + task.id + 'EditorModalLabel'" [attr.id]="'task' + task.id + 'EditorModal'" aria-hidden="true" class="fade modal" tabindex="-1">
+<div aria-hidden="true" [attr.aria-labelledby]="'task' + task.id + 'EditorModalLabel'" [attr.id]="'task' + task.id + 'EditorModal'" class="fade modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <form (ngSubmit)="emitTaskEdition()">
@@ -10,14 +10,14 @@
         <div class="modal-body">
           <div class="m-3 mt-0">
             <label class="form-label" for="title">Title</label>
-            <input [(ngModel)]="task.title" class="form-control" id="title" name="title" type="text">
+            <input class="form-control" id="title" name="title" [(ngModel)]="task.title" type="text">
           </div>
           <div class="m-3">
             <label class="form-label" for="description">Description</label>
-            <input [(ngModel)]="task.description" class="form-control" id="description" name="description" type="text">
+            <input class="form-control" id="description" name="description" [(ngModel)]="task.description" type="text">
           </div>
           <div class="form-check m-3">
-            <input [(ngModel)]="task.completed" class="form-check-input" id="completed" name="completed" type="checkbox">
+            <input class="form-check-input" id="completed" name="completed" [(ngModel)]="task.completed" type="checkbox">
             <label class="form-check-label" for="completed">Completed</label>
           </div>
           <div class="modal-footer">
