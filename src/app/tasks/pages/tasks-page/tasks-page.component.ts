@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TasksService } from '../../../tasks/services/tasks.service';
-import { Task } from '../../../tasks/interfaces/task.interfaces';
+import { TasksService } from '../../services/tasks.service';
+import { Task } from '../../interfaces/task.interfaces';
 
 @Component({
-  selector: 'shared-tasks-page',
+  selector: 'tasks-tasks-page',
   templateUrl: './tasks-page.component.html'
 })
 export class TasksPageComponent {

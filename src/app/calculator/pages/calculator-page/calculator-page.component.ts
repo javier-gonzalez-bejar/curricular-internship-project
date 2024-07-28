@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'shared-calculator-page',
+  selector: 'calculator-calculator-page',
   templateUrl: './calculator-page.component.html'
 })
 export class CalculatorPageComponent {

@@ -5,10 +5,10 @@ import { TaskAdditorComponent } from './components/task-additor/task-additor.com
 import { TaskDeleterComponent } from './components/task-deleter/task-deleter.component';
 import { TaskEditorComponent } from './components/task-editor/task-editor.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
+import { TasksPageComponent } from './pages/tasks-page/tasks-page.component';
 
 @NgModule({
-  declarations: [TaskAdditorComponent, TaskDeleterComponent, TaskEditorComponent, TaskListComponent],
-  exports: [TaskAdditorComponent, TaskDeleterComponent, TaskEditorComponent, TaskListComponent],
+  declarations: [TaskAdditorComponent, TaskDeleterComponent, TaskEditorComponent, TaskListComponent, TasksPageComponent],
   imports: [CommonModule, FormsModule]
 })
 export class TasksModule { }
